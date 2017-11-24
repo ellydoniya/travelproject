@@ -1,9 +1,12 @@
 package com.web.trip.admin.service;
 
 import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.web.trip.model.ShopCategoryDTO;
 import com.web.trip.model.TravelCategory;
 import com.web.trip.model.TravelMemberDTO;
 import com.web.trip.model.TravelProductDTO;
@@ -51,5 +54,16 @@ public class AdminMapper {
 	//여행 상품 수정 
 	public int editTravelProduct(TravelProductDTO dto) {
 		return sqlSession.update("editTravelProduct",dto);
+	}
+	//쇼핑몰 카테고리 등록
+	public int insertShopCategory(ShopCategoryDTO dto) {
+		return sqlSession.insert("insertShopCategory",dto);
+	}
+	//쇼핑몰 카테고리 목록
+	public List<ShopCategoryDTO> listShopCategory(){
+		return sqlSession.selectList("listShopCategory");
+	}
+	public int deleteShopCategory(int shop_cate_num) {
+		return sqlSession.delete("deleteShopCategory",shop_cate_num);
 	}
 }

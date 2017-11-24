@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.web.trip.admin.service.AdminMapper;
+import com.web.trip.model.ShopCategoryDTO;
 import com.web.trip.model.TravelCategory;
 import com.web.trip.model.TravelMemberDTO;
 import com.web.trip.model.TravelProductDTO;
@@ -51,15 +53,15 @@ public class AdminController {
 		// 도, 시가 추가될 시 util에 추가!
 		String [] values = cateInput.configCategory(Integer.parseInt(state), Integer.parseInt(city));
 		TravelCategory dto = new TravelCategory();
-		dto.setState(values[0]);
-		dto.setCity(values[1]);
+		dto.setTravel_cate_state(values[0]);
+		dto.setTravel_cate_city(values[1]);
 		int res = adminMapper.insertTravelCategory(dto);
 		if(res>0){
 			mav.addObject("msg","카테고리 등록 완료! 카테고리 목록으로 이동합니다.");
 			mav.addObject("url","admin/travel_category_list");
 		}else {
 			mav.addObject("msg","카테고리 등록 실패! 카테고리 등록으로 이동합니다.");
-			mav.addObject("url","admin/travel_category_list");
+			mav.addObject("url","admin/travel_category_insert");
 		}
 		mav.setViewName("message"); return mav;
 	}
@@ -176,9 +178,35 @@ public class AdminController {
 	@RequestMapping(value="shop_category_insert", method=RequestMethod.GET)
 	public String viewShopCategoryInsert() {
 		return "admin/shop_category_insert";
-	}
+	}//쇼핑몰 카테고리 등록
 	@RequestMapping(value="shop_category_insert",method=RequestMethod.POST)
-	public ModelAndView insertShopCategory(@ModelAttribute ) {
-		
+	public ModelAndView insertShopCategory(@ModelAttribute ShopCategoryDTO dto ) {
+		int res = adminMapper.insertShopCategory(dto);
+		if(res> 0) {
+			mav.addObject("msg","쇼핑몰 카테고리 등록 성공! 쇼핑몰 카테고리 목록으로 이동합니다.");
+			mav.addObject("url","admin/shop_category_list");
+		}else {
+			mav.addObject("msg","쇼핑몰 카테고리 등록 실패! 쇼핑몰 카테고리 등록으로 이동합니다.");
+			mav.addObject("url","admin/shop_category_insert");
+		}
+		mav.setViewName("message");	return mav;
 	}
+	//쇼핑몰 카테고리 목록
+	@RequestMapping(value="shop_category_list")
+	public ModelAndView listShopCategory() {
+		List<ShopCategoryDTO> list = adminMapper.listShopCategory();
+		mav.addObject("shopCategory",list);	return mav;
+	}//쇼핑몰 카테고리 삭제
+	@RequestMapping(value="shop_category_delete")
+	public ModelAndView deleteShopCategory(int shop_cate_num) {
+		int res = adminMapper.deleteShopCategory(shop_cate_num);
+		if(res >0) {
+			mav.addObject("msg","쇼핑몰 카테고리 삭제 성공! 쇼핑몰 카테고리 목록으로 이동합니다.");
+		}else {
+			mav.addObject("msg","쇼핑몰 카테고리 삭제 실패! 쇼핑몰 카테고리 목록으로 이동합니다.");
+		}
+		mav.addObject("url","admin/shop_category_list");
+		mav.setViewName("message");	return mav;
+	}
+	
 }
