@@ -63,7 +63,16 @@ public class AdminMapper {
 	public List<ShopCategoryDTO> listShopCategory(){
 		return sqlSession.selectList("listShopCategory");
 	}
+	//쇼핑몰 카테고리 삭제
 	public int deleteShopCategory(int shop_cate_num) {
 		return sqlSession.delete("deleteShopCategory",shop_cate_num);
+	}
+	//getCategory
+	public ShopCategoryDTO getShopCategory(int shop_cate_num) {
+		return sqlSession.selectOne("getShopCategory",shop_cate_num);
+	}
+	//쇼핑몰 카테고리 수정
+	public int editShopCategory(ShopCategoryDTO dto) {
+		return sqlSession.update("editShopCategory",dto);
 	}
 }
