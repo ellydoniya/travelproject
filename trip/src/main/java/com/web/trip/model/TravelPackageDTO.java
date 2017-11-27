@@ -7,7 +7,7 @@ public class TravelPackageDTO {
 	private String pack_email;
 	private int pack_price;
 	private String pack_period;
-	private String pack_date;
+	private String book_date;
 	private String pack_content;
 	private String pack_place;
 	private String pack_config;
@@ -52,12 +52,12 @@ public class TravelPackageDTO {
 		this.pack_period = pack_period;
 	}
 
-	public String getPack_date() {
-		return pack_date;
+	public String getBook_date() {
+		return book_date;
 	}
 
-	public void setPack_date(String pack_date) {
-		this.pack_date = pack_date;
+	public void setBook_date(String book_date) {
+		this.book_date = book_date;
 	}
 
 	public String getPack_content() {
