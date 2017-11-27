@@ -1,18 +1,9 @@
 package com.web.trip.model;
 
-public class StarScoreDTO {
-	private int star_num;
+public class ScoreDTO {
 	private int board_num;
 	private int prod_num;
 	private int prod_score;
-
-	public int getStar_num() {
-		return star_num;
-	}
-
-	public void setStar_num(int star_num) {
-		this.star_num = star_num;
-	}
 
 	public int getBoard_num() {
 		return board_num;

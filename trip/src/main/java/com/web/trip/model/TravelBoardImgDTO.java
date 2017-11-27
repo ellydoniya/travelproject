@@ -1,6 +1,6 @@
 package com.web.trip.model;
 
-public class ImgDTO {
+public class TravelBoardImgDTO {
 	private int board_num;
 	private String board_org_img;
 	private String board_str_img;
