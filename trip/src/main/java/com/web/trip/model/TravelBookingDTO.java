@@ -4,6 +4,7 @@ public class TravelBookingDTO {
 
 	private int book_num;
 	private int prod_num;
+	private int pack_num;
 	private String member_id;
 	private String book_email;
 	private int book_person;
@@ -25,6 +26,14 @@ public class TravelBookingDTO {
 
 	public void setProd_num(int prod_num) {
 		this.prod_num = prod_num;
+	}
+
+	public int getPack_num() {
+		return pack_num;
+	}
+
+	public void setPack_num(int pack_num) {
+		this.pack_num = pack_num;
 	}
 
 	public String getMember_id() {
