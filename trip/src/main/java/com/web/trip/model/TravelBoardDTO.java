@@ -10,7 +10,9 @@ public class TravelBoardDTO {
 	private int board_readcount;
 	private int board_likecount;
 	private int prod_num;
+	private int pack_num;
 	private int prod_score;
+	private int pack_score;
 
 	public int getBoard_num() {
 		return board_num;
@@ -84,12 +86,28 @@ public class TravelBoardDTO {
 		this.prod_num = prod_num;
 	}
 
+	public int getPack_num() {
+		return pack_num;
+	}
+
+	public void setPack_num(int pack_num) {
+		this.pack_num = pack_num;
+	}
+
 	public int getProd_score() {
 		return prod_score;
 	}
 
 	public void setProd_score(int prod_score) {
 		this.prod_score = prod_score;
+	}
+
+	public int getPack_score() {
+		return pack_score;
+	}
+
+	public void setPack_score(int pack_score) {
+		this.pack_score = pack_score;
 	}
 
 }

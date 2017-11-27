@@ -1,6 +1,6 @@
 package com.web.trip.model;
 
-public class ShopProductListDTO {
+public class ShopPopularDTO {
 	private int shop_prod_num;
 	private int shop_prod_purchase;
 
