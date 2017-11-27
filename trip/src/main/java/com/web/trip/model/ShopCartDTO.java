@@ -4,7 +4,7 @@ public class ShopCartDTO {
 	private String member_id;
 	private int shop_cart_num;
 	private int shop_prod_num;
-	private int shop_prod_qty;
+	private int shop_cart_pqty;
 
 	public String getMember_id() {
 		return member_id;
@@ -30,12 +30,12 @@ public class ShopCartDTO {
 		this.shop_prod_num = shop_prod_num;
 	}
 
-	public int getShop_prod_qty() {
-		return shop_prod_qty;
+	public int getShop_cart_pqty() {
+		return shop_cart_pqty;
 	}
 
-	public void setShop_prod_qty(int shop_prod_qty) {
-		this.shop_prod_qty = shop_prod_qty;
+	public void setShop_cart_pqty(int shop_cart_pqty) {
+		this.shop_cart_pqty = shop_cart_pqty;
 	}
 
 }

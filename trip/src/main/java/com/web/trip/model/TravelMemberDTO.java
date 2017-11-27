@@ -15,6 +15,7 @@ public class TravelMemberDTO {
 	private String member_content;
 	private String member_question;
 	private String member_answer;
+	private String member_reg_date;
 
 	public int getMember_num() {
 		return member_num;
@@ -104,12 +105,6 @@ public class TravelMemberDTO {
 		this.member_hp3 = member_hp3;
 	}
 
-	public String getAllHp() {
-		if (member_hp1 == null)
-			return "전화 없음";
-		return member_hp1 + "-" + member_hp2 + "-" + member_hp3;
-	}
-
 	public String getMember_content() {
 		return member_content;
 	}
@@ -132,6 +127,14 @@ public class TravelMemberDTO {
 
 	public void setMember_answer(String member_answer) {
 		this.member_answer = member_answer;
+	}
+
+	public String getMember_reg_date() {
+		return member_reg_date;
+	}
+
+	public void setMember_reg_date(String member_reg_date) {
+		this.member_reg_date = member_reg_date;
 	}
 
 }

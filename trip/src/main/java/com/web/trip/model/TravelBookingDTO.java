@@ -10,7 +10,7 @@ public class TravelBookingDTO {
 	private int book_person;
 	private String book_date;
 	private int book_price;
-
+	
 	public int getBook_num() {
 		return book_num;
 	}
