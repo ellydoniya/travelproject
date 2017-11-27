@@ -4,9 +4,8 @@ public class TravelBoardDTO {
 	private int board_num;
 	private String member_id;
 	private String board_title;
-	private String board_text;
-	private String board_org_img;
-	private String board_str_img;
+	private String board_content;
+	private int board_img;
 	private String board_reg_date;
 	private int board_readcount;
 	private int board_likecount;
@@ -37,28 +36,20 @@ public class TravelBoardDTO {
 		this.board_title = board_title;
 	}
 
-	public String getBoard_text() {
-		return board_text;
+	public String getBoard_content() {
+		return board_content;
 	}
 
-	public void setBoard_text(String board_text) {
-		this.board_text = board_text;
+	public void setBoard_content(String board_content) {
+		this.board_content = board_content;
 	}
 
-	public String getBoard_org_img() {
-		return board_org_img;
+	public int getBoard_img() {
+		return board_img;
 	}
 
-	public void setBoard_org_img(String board_org_img) {
-		this.board_org_img = board_org_img;
-	}
-
-	public String getBoard_str_img() {
-		return board_str_img;
-	}
-
-	public void setBoard_str_img(String board_str_img) {
-		this.board_str_img = board_str_img;
+	public void setBoard_img(int board_img) {
+		this.board_img = board_img;
 	}
 
 	public String getBoard_reg_date() {
