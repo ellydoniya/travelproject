@@ -1,59 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.web.trip.admin.model">
-<!-- 멤버-->
-<select id = "listMember" resultType="TravelMemberDTO">
-	select * from travel_member order by member_ num desc
-</select>
-<select id="getMember" parameterType="int" resultType="TravelMemberDTO">
-	select * from travel_member where member_num = #{member_num}
-</select>
-<update id="editMember" parameterType="TravelMemberDTO" >
-	update from travel_member set <!-- 뭐 고칠지 생각 -->
-</update>
-<delete id="deleteMember" parameterType="int">
-	delete from travel_member where member_num = #{member_num}
-</delete>
-<select id="booking_list" parameterType = "int" resultType="TravelBookingDTO">
-	select * from travel_booking where member_id = #{member_id}
-</select>
-<!-- 지역 카테고리 -->
-<select id="listTravelCategory" resultType="TravelCategory">
-	select * from travel_category 
-</select>
-<insert id="insertTravelCategory" parameterType="TravelCategory">
-	insert into travel_category valuse(travel_cate_seq.nextval, #{state}, #{city})
-</insert>
-<delete id="deleteTravelCategory" parameterType="int">
-	delete * from travel_category where tcate_num = #{tcate_num}
-</delete>
-<select id="getCategory" parameterType="int" resultType="TravelCategory">
-	select * from travel_category where tcate_num = #{tcate_num}
-</select>
-<update id="editTravelCategory" parameterType="TravelCategory">
-	update from tavel_category set state = #{state} , city = #{city} where tcate_num = #{tcate_num}
-</update>
-<!-- 여행 상품 -->
-<insert id = "insertTravelProduct" parameterType="TravelProductDTO">
-	insert into travel_product values(travel_prod_seq.nextval, #{prod_num}, #{prod_name}, #{prod_email}, #{prod_hp} , #{prod_person},
-			#{prod_price}, #{book_date}, #{prod_org_img}, #{prod_str_img}, #{prod_address1}, #{prod_address2}, #{prod_content}, #{prod_pick})
-</insert>
-<delete id="deleteTravelProduct" parameterType="int">
-	delete * from travel_product where prod_num = #{prod_num}
-</delete>
-<select id="listTravelProduct" resultType="TravelProductDTO">
-	select * from travel_product order by prod_num desc
-</select>
-<select id="getTravelProduct" parameterType="int" resultType="TravelProductDTO">
-	select * from travel_product where prod_num = #{prod_num}
-</select>
-<update id="editTravelProduct" parameterType="TravelProductDTO">
-	update from travel_product set prod_name = #{prod_name}, prod_email = #{prod_email} , prod_hp = #{prod_hp},
-		prod_person = #{prod_person} , prod_price = #{prod_price}, prod_org_img = #{prod_org_img},
-		prod_address1 = #{prod_address1} , prod_address2 = #{prod_address2}, prod_content = #{prod_content}, prod_pick = #{prod_pick}
-</update>
-<!-- 패키지 상품 -->
-<!-- 쇼핑몰 상품 -->
+	<!-- 멤버 -->
+	<select id="listMember" resultType="TravelMemberDTO">
+		select * from travel_member
+		order by member_num desc
+	</select>
+	<select id="getMember" parameterType="int" resultType="TravelMemberDTO">
+		select *
+		from travel_member where member_num = #{member_num}
+	</select>
+	<update id="editMember" parameterType="TravelMemberDTO">
+		update from travel_member
+		set
+		member_passwd=#{member_passwd},member_nickname=#{member_nickname},
+		member_org_img=#{member_org_img},member_str_img=#{member_str_img},
+		member_hp1=#{member_hp1},member_hp2=#{member_hp2},member_hp3=#{member_hp3},
+		member_content=#{member_content},member_question=#{member_question},member_answer=#{member_answer}
+	</update>
+	<delete id="deleteMember" parameterType="int">
+		delete from
+		travel_member where member_num = #{member_num}
+	</delete>
+	<select id="booking_list" parameterType="int" resultType="TravelBookingDTO">
+		select
+		* from travel_booking where member_id = #{member_id}
+	</select>
+	<!-- 지역 카테고리 -->
+	<select id="listTravelCategory" resultType="TravelCategory">
+		select * from
+		travel_category
+	</select>
+	<insert id="insertTravelCategory" parameterType="TravelCategory">
+		insert into
+		travel_category values(travel_cate_seq.nextval, #{cate_state},
+		#{cate_city})
+	</insert>
+	<delete id="deleteTravelCategory" parameterType="int">
+		delete * from
+		travel_category where cate_num = #{cate_num}
+	</delete>
+	<select id="getCategory" parameterType="int" resultType="TravelCategory">
+		select *
+		from travel_category where cate_num = #{cate_num}
+	</select>
+	<update id="editTravelCategory" parameterType="TravelCategory">
+		update from
+		travel_category set cate_state = #{cate_state} , cate_city =
+		#{cate_city} where
+		cate_num =
+		#{cate_num}
+	</update>
+	<!-- 여행 상품 -->
+	<insert id="insertTravelProduct" parameterType="TravelProductDTO">
+		insert into
+		travel_product values(travel_prod_seq.nextval, #{prod_num},
+		#{prod_name}, #{prod_email}, #{prod_hp} , #{prod_person},
+		#{prod_price}, #{book_date}, #{prod_img},
+		#{prod_address1},
+		#{prod_address2}, #{prod_content}, #{prod_pick})
+	</insert>
+	<delete id="deleteTravelProduct" parameterType="int">
+		delete * from
+		travel_product where prod_num = #{prod_num}
+	</delete>
+	<select id="listTravelProduct" resultType="TravelProductDTO">
+		select * from
+		travel_product order by prod_num desc
+	</select>
+	<select id="getTravelProduct" parameterType="int" resultType="TravelProductDTO">
+		select * from travel_product where prod_num = #{prod_num}
+	</select>
+	<update id="editTravelProduct" parameterType="TravelProductDTO">
+		update from
+		travel_product set prod_name = #{prod_name}, prod_email =
+		#{prod_email} , prod_hp = #{prod_hp},
+		prod_person = #{prod_person} ,
+		prod_price = #{prod_price}, prod_img = #{prod_img},
+		prod_address1 =
+		#{prod_address1} , prod_address2 = #{prod_address2},
+		prod_content =
+		#{prod_content}, prod_pick = #{prod_pick}
+	</update>
+	<!-- 패키지 상품 -->
+	<!-- 쇼핑몰 상품 -->
 </mapper>
