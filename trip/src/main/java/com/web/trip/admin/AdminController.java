@@ -1,6 +1,10 @@
 package com.web.trip.admin;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -75,22 +79,24 @@ public class AdminController {
 	//==============<<<여행 지역 카테고리 관련>>>======================== 
 	@RequestMapping(value="travel_category_insert", method=RequestMethod.GET)
 	public String viewTravelCategory() {
-		return "admin/trave_category_insert";
+		return "admin/travel_category_insert";
 	}
 	// 여행 지역 카테고리 등록
 	@RequestMapping(value="travel_category_insert",method=RequestMethod.POST)
-	public ModelAndView insertCategory(@RequestParam String state, @RequestParam String city) {
+	public ModelAndView insertCategory(HttpServletRequest req, @RequestParam String state, @RequestParam String city) throws UnsupportedEncodingException {
+		req.setCharacterEncoding("EUC-KR");
+		System.out.println("city: "+city);
 		if(state==null || state.trim().equals("") || city==null || city.trim().equals("")) {
 			return new ModelAndView("redirect:travel_category_insert");
 		}
 		// 도, 시가 추가될 시 util에 추가!
-		String [] values = cateInput.configCategory(Integer.parseInt(state), Integer.parseInt(city));
+		String [] values = cateInput.configCategory(Integer.parseInt(state), city);
 		TravelCategory dto = new TravelCategory();
 		dto.setCate_state(values[0]);
 		dto.setCate_city(values[1]);
 		int res = adminMapper.insertTravelCategory(dto);
 		String [] msg = {"여행 카테고리 등록 완료! 여행 카테고리 목록 페이지로 이동합니다.","여행상품 등록 실패! 여행상품 등록 페이지로 이동합니다."};
-		String [] url = {"admin/travel_category_list","admin/travel_category_insert"};
+		String [] url = {"admin/travel_category_list","admin/travel_category_edit?travel_cate_insert"};
 		return cm.resMassege(res, msg, url);
 	}
 	//여행 지역 카테고리 삭제
@@ -98,7 +104,7 @@ public class AdminController {
 	public ModelAndView veiwDeleteTravelCategory(int tCate_num) {
 		int res = adminMapper.deleteTravelCategory(tCate_num);
 		String [] msg = {"여행 카테고리 삭제 완료! 여행 카테고리 목록 페이지로 이동합니다.","여행상품 삭제 실패! 여행상품 목록 페이지로 이동합니다."};
-		String [] url = {"admin/travel_category_list","admin/travel_category_list"};
+		String [] url = {"admin/travel_category_list","admin/travel_category_edit?travel_cate_list"};
 		return cm.resMassege(res, msg, url);
 	}
 	//여행 지역 카테고리 수정
@@ -115,7 +121,7 @@ public class AdminController {
 		}
 		int res = adminMapper.editTravelCategory(dto);
 		String [] msg = {"여행 카테고리 수정 완료! 여행 카테고리 목록 페이지로 이동합니다.","여행상품 수정 실패! 여행상품 수정 페이지로 이동합니다."};
-		String [] url = {"admin/travel_category_list","admin/travel_category_edit?cate_num="+dto.getCate_num()};
+		String [] url = {"admin/travel_category_list","admin/travel_category_edit?travel_cate_num="+dto.getCate_num()};
 		return cm.resMassege(res, msg, url);
 	}
 	//여행지역 카테고리 목록
