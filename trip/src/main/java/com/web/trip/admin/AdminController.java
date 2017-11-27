@@ -84,13 +84,14 @@ public class AdminController {
 	// 여행 지역 카테고리 등록
 	@RequestMapping(value="travel_category_insert",method=RequestMethod.POST)
 	public ModelAndView insertCategory(HttpServletRequest req, @RequestParam String state, @RequestParam String city) throws UnsupportedEncodingException {
-		req.setCharacterEncoding("EUC-KR");
-		System.out.println("city: "+city);
+		req.setCharacterEncoding("UTF-8");
+		String tempStr = new String(city.getBytes("8859_1"), "UTF-8");
+		System.out.println("city: "+tempStr);
 		if(state==null || state.trim().equals("") || city==null || city.trim().equals("")) {
 			return new ModelAndView("redirect:travel_category_insert");
 		}
 		// 도, 시가 추가될 시 util에 추가!
-		String [] values = cateInput.configCategory(Integer.parseInt(state), city);
+		String [] values = cateInput.configCategory(Integer.parseInt(state), tempStr);
 		TravelCategory dto = new TravelCategory();
 		dto.setCate_state(values[0]);
 		dto.setCate_city(values[1]);

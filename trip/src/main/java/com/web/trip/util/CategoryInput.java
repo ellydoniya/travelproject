@@ -8,12 +8,12 @@ public class CategoryInput {
 	public String[] configCategory(int state, String city) {
 		String[] stateChoice = { "서울특별시", "강원도", "경기도", "경상도", "전라도", "제주도", "충청도" };
 		String[] seoulCity = { "강남구", "종로구", "마포구", "중구", "용산구", };
-		String[] kangwonCity = {"평창", "춘천","강릉","횡성","양양"};
-		String[] kyunggiCity = { "용인", "파주" ,"의정부시","수원시","인천시"};
-		String[] kyungsangCity = { "부산", "거제", "통영", "남해", "대구", "울산" };
-		String[] jeonraCity = { "광주", "춘천", "여수", "전주", "남원"};
-		String[] jejuCity = { "제주", "서귀포" };
-		String[] chungchungCity = { "대전","보령", "천안", "청주"  };
+		String[] kangwonCity = {"평창시", "춘천시", "강릉시", "횡성시" ,"양양시"};
+		String[] kyunggiCity = {"용인시", "파주시", "의정부시", "수원특별시", "인천광역시" };
+		String[] kyungsangCity = { "부산광역시", "거제시", "통영시", "남해시", "대구광역시", "울산광역시" };
+		String[] jeonraCity = { "광주광역시", "춘천시", "여수시", "전주시", "남원시"};
+		String[] jejuCity = { "제주시", "서귀포시" };
+		String[] chungchungCity = { "대전광역시","보령시", "천안시", "청주시" };
 		String [] tmp = new String [2];	
 		String select = null;
 		
