@@ -25,6 +25,7 @@ public class BookingController {
 
 	@RequestMapping(value = "booking_index", method = RequestMethod.GET)
 	public ModelAndView indexBooking(HttpServletRequest arg0) throws Exception {
+		
 		int prod_num = 0, pack_num = 0;
 
 		try {
