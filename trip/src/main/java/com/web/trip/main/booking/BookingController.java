@@ -25,7 +25,23 @@ public class BookingController {
 
 	@RequestMapping(value = "booking_index", method = RequestMethod.GET)
 	public ModelAndView indexBooking(HttpServletRequest arg0) throws Exception {
-		int prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
-		return new ModelAndView("main/booking/index", "prod_num", prod_num);
+		int prod_num = 0, pack_num = 0;
+
+		try {
+			prod_num = ServletRequestUtils.getIntParameter(arg0, "prod_num");
+		} catch (NullPointerException e) {
+		}
+
+		try {
+			pack_num = ServletRequestUtils.getIntParameter(arg0, "pack_num");
+		} catch (NullPointerException e) {
+		}
+
+		mav.addObject("prod_num", prod_num);
+		mav.addObject("pack_num", pack_num);
+
+		mav.setViewName("main/booking/index");
+
+		return mav;
 	}
 }
