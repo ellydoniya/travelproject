@@ -10,7 +10,9 @@ public class TravelBookingDTO {
 	private int book_person;
 	private String book_date;
 	private int book_price;
-	
+	private int book_insurance;
+	private String rentalcar_num;
+
 	public int getBook_num() {
 		return book_num;
 	}
@@ -73,6 +75,22 @@ public class TravelBookingDTO {
 
 	public void setBook_price(int book_price) {
 		this.book_price = book_price;
+	}
+
+	public int getBook_insurance() {
+		return book_insurance;
+	}
+
+	public void setBook_insurance(int book_insurance) {
+		this.book_insurance = book_insurance;
+	}
+
+	public String getRentalcar_num() {
+		return rentalcar_num;
+	}
+
+	public void setRentalcar_num(String rentalcar_num) {
+		this.rentalcar_num = rentalcar_num;
 	}
 
 }
