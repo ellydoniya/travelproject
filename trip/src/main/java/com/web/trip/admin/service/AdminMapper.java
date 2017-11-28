@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.web.trip.model.ShopCategoryDTO;
+import com.web.trip.model.ShopProductDTO;
 import com.web.trip.model.TravelBookingDTO;
 import com.web.trip.model.TravelCategory;
 import com.web.trip.model.TravelMemberDTO;
@@ -79,7 +80,7 @@ public class AdminMapper {
 	}
 	//패키지 상품 리스트
 	public List<TravelPackageDTO> listPackage(){
-		return sqlSession.selectList("listpackage");
+		return sqlSession.selectList("listPackage");
 	}
 	//패키지 상품 등록
 	public int insertPackage(TravelPackageDTO dto) {
@@ -115,5 +116,25 @@ public class AdminMapper {
 	//쇼핑몰 카테고리 수정
 	public int editShopCategory(ShopCategoryDTO dto) {
 		return sqlSession.update("editShopCategory",dto);
+	}
+	//쇼핑몰 상품 목록
+	public List<ShopProductDTO> listShopProduct(){
+		return sqlSession.selectList("listShopProduct");
+	}
+	//쇼핑몰 상품 등록
+	public int insertShopProd(ShopProductDTO dto) {
+		return sqlSession.insert("insertShopProduct", dto);
+	}
+	//쇼핑몰 상품 삭제
+	public int deleteShopProd(int shop_prod_num) {
+		return sqlSession.delete("deleteShopProduct", shop_prod_num);
+	}
+	//get shopProduct
+	public ShopProductDTO getProduct(int shop_prod_num){
+		return sqlSession.selectOne("getProduct", shop_prod_num);
+	}
+	//쇼핑몰 상품 수정
+	public int editShopProduct(ShopProductDTO dto) {
+		return sqlSession.update("editShopProduct", dto);
 	}
 }

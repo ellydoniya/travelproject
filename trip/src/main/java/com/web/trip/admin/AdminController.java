@@ -1,6 +1,10 @@
 package com.web.trip.admin;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.trip.admin.service.AdminMapper;
 import com.web.trip.model.ShopCategoryDTO;
+import com.web.trip.model.ShopProductDTO;
 import com.web.trip.model.TravelBookingDTO;
 import com.web.trip.model.TravelCategory;
 import com.web.trip.model.TravelMemberDTO;
@@ -74,19 +79,22 @@ public class AdminController {
 	//==============<<<여행 지역 카테고리 관련>>>======================== 
 	@RequestMapping(value="travel_category_insert", method=RequestMethod.GET)
 	public String viewTravelCategory() {
-		return "admin/trave_category_insert";
+		return "admin/travel_category_insert";
 	}
 	// 여행 지역 카테고리 등록
 	@RequestMapping(value="travel_category_insert",method=RequestMethod.POST)
-	public ModelAndView insertCategory(@RequestParam String state, @RequestParam String city) {
+	public ModelAndView insertCategory(HttpServletRequest req, @RequestParam String state, @RequestParam String city) throws UnsupportedEncodingException {
+		req.setCharacterEncoding("UTF-8");
+		String tempStr = new String(city.getBytes("8859_1"), "UTF-8");
+		System.out.println("city: "+tempStr);
 		if(state==null || state.trim().equals("") || city==null || city.trim().equals("")) {
 			return new ModelAndView("redirect:travel_category_insert");
 		}
 		// 도, 시가 추가될 시 util에 추가!
-		String [] values = cateInput.configCategory(Integer.parseInt(state), Integer.parseInt(city));
+		String [] values = cateInput.configCategory(Integer.parseInt(state), tempStr);
 		TravelCategory dto = new TravelCategory();
-		dto.setTravel_cate_state(values[0]);
-		dto.setTravel_cate_city(values[1]);
+		dto.setCate_state(values[0]);
+		dto.setCate_city(values[1]);
 		int res = adminMapper.insertTravelCategory(dto);
 		String [] msg = {"여행 카테고리 등록 완료! 여행 카테고리 목록 페이지로 이동합니다.","여행상품 등록 실패! 여행상품 등록 페이지로 이동합니다."};
 		String [] url = {"admin/travel_category_list","admin/travel_category_edit?travel_cate_insert"};
@@ -114,7 +122,7 @@ public class AdminController {
 		}
 		int res = adminMapper.editTravelCategory(dto);
 		String [] msg = {"여행 카테고리 수정 완료! 여행 카테고리 목록 페이지로 이동합니다.","여행상품 수정 실패! 여행상품 수정 페이지로 이동합니다."};
-		String [] url = {"admin/travel_category_list","admin/travel_category_edit?travel_cate_num="+dto.getTravel_cate_num()};
+		String [] url = {"admin/travel_category_list","admin/travel_category_edit?travel_cate_num="+dto.getCate_num()};
 		return cm.resMassege(res, msg, url);
 	}
 	//여행지역 카테고리 목록
@@ -264,6 +272,54 @@ public class AdminController {
 		int res = adminMapper.editShopCategory(dto);
 		String [] msg = {"쇼핑몰 카테고리 수정 완료! 목록으로 이동합니다!","쇼핑몰 카테고리 수정 실패! 수정페이지로 이동합니다."};
 		String [] url = {"admin/shop_categroy_list","admin/shop_category_edit?shop_cate_num="+dto.getShop_cate_num()};
+		return cm.resMassege(res, msg, url);
+	}
+	//쇼핑몰 상품 목록
+	@RequestMapping(value="shop_prod_list")
+	public ModelAndView listShopProduct() {
+		List<ShopProductDTO> list = adminMapper.listShopProduct();
+		mav.addObject("shopProductList",list);
+		mav.setViewName("admin/shop_prod_list"); return mav;
+	}
+	//쇼핑몰 상품 등록
+	@RequestMapping(value="shop_prod_insert", method=RequestMethod.GET)
+	public String viewshopInsert() {
+		return "admin/shop_prod_insert";
+	}
+	@RequestMapping(value="shop_prod_insert", method=RequestMethod.POST)
+	public ModelAndView ShopProdInsert(@ModelAttribute ShopProductDTO dto) {
+		int res = adminMapper.insertShopProd(dto);
+		String msg[] = {"쇼핑몰 상품 등록 완료! 쇼핑몰 리스트 페이지로 이동합니다.","쇼핑몰 상품 등록 실패! 쇼핑몰 등록 페이지로 이동합니다."};
+		String url[] = {"admin/shop_prod_list","admin/shop_prod_insert"};
+		return cm.resMassege(res, msg, url);
+	}
+	//쇼핑몰 상품 삭제
+	@RequestMapping(value="shop_prod_delete")
+	public ModelAndView deleteShopProduct(@RequestParam String shop_prod_num) {
+		int res = adminMapper.deleteShopProd(Integer.parseInt(shop_prod_num));
+		String msg[] = {"쇼핑몰 상품 삭제 완료! 쇼핑몰 리스트 페이지로 이동합니다.","쇼핑몰 삭제 실패! 쇼핑몰 상세보기 페이지로 이동합니다."};
+		String url[] = {"admin/shop_prod_list","admin/shop_prod_view?shop_prod_num="+shop_prod_num};
+		return cm.resMassege(res, msg, url);
+	}
+	//쇼핑몰 상품 상세보기
+	@RequestMapping(value="shop_prod_view")
+	public ModelAndView viewShopProduct(@RequestParam String shop_prod_num) {
+		ShopProductDTO dto= adminMapper.getProduct(Integer.parseInt(shop_prod_num));
+		mav.addObject("getShopProduct", dto);
+		mav.setViewName("admin/shop_prod_view"); return mav;
+	}
+	//쇼핑몰 상품 수정
+	@RequestMapping(value="shop_prod_edit", method=RequestMethod.GET)
+	public ModelAndView viewEditShopProduct(@RequestParam String shop_prod_num) {
+		ShopProductDTO dto = adminMapper.getProduct(Integer.parseInt(shop_prod_num));
+		mav.addObject("getShopProduct", dto);
+		mav.setViewName("admin/shop_prod_edit"); return mav;
+	}
+	@RequestMapping(value="shop_prod_edit", method=RequestMethod.POST)
+	public ModelAndView editShopProduct(@ModelAttribute ShopProductDTO dto) {
+		int res = adminMapper.editShopProduct(dto);
+		String msg[] = {"쇼핑몰 상품 수정 완료! 상품 상세보기 페이지로 이동합니다.","쇼핑몰 상품 수정 실패! 상품 수정 페이지로 이동합니다."};
+		String url[] = {"admin/shop_prod_view?shop_prod_num="+dto.getShop_prod_num(),"admin/shop_prod_edit?shop_prod_num="+dto.getShop_prod_num()};
 		return cm.resMassege(res, msg, url);
 	}
 }

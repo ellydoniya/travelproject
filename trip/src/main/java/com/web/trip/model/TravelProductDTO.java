@@ -8,8 +8,7 @@ public class TravelProductDTO {
 	private String prod_person;
 	private int prod_price;
 	private String book_date;
-	private String prod_org_img;
-	private String prod_str_img;
+	private int prod_img;
 	private String prod_address1;
 	private String prod_address2;
 	private String prod_content;
@@ -71,20 +70,12 @@ public class TravelProductDTO {
 		this.book_date = book_date;
 	}
 
-	public String getProd_org_img() {
-		return prod_org_img;
+	public int getProd_img() {
+		return prod_img;
 	}
 
-	public void setProd_org_img(String prod_org_img) {
-		this.prod_org_img = prod_org_img;
-	}
-
-	public String getProd_str_img() {
-		return prod_str_img;
-	}
-
-	public void setProd_str_img(String prod_str_img) {
-		this.prod_str_img = prod_str_img;
+	public void setProd_img(int prod_img) {
+		this.prod_img = prod_img;
 	}
 
 	public String getProd_address1() {

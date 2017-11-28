@@ -3,8 +3,7 @@ package com.web.trip.model;
 public class ShopProductDTO {
 	private int shop_prod_num;
 	private String shop_prod_name;
-	private String shop_prod_org_img;
-	private String shop_prod_str_img;
+	private int shop_prod_img;
 	private int shop_prod_price;
 	private String shop_prod_spec;
 	private int shop_prod_qty;
@@ -26,20 +25,12 @@ public class ShopProductDTO {
 		this.shop_prod_name = shop_prod_name;
 	}
 
-	public String getShop_prod_org_img() {
-		return shop_prod_org_img;
+	public int getShop_prod_img() {
+		return shop_prod_img;
 	}
 
-	public void setShop_prod_org_img(String shop_prod_org_img) {
-		this.shop_prod_org_img = shop_prod_org_img;
-	}
-
-	public String getShop_prod_str_img() {
-		return shop_prod_str_img;
-	}
-
-	public void setShop_prod_str_img(String shop_prod_str_img) {
-		this.shop_prod_str_img = shop_prod_str_img;
+	public void setShop_prod_img(int shop_prod_img) {
+		this.shop_prod_img = shop_prod_img;
 	}
 
 	public int getShop_prod_price() {

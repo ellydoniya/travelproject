@@ -1,19 +1,14 @@
 package com.web.trip.model;
 
 public class CommentDTO {
-	private int comment_num;
 	private int board_num;
 	private String member_id;
-	private String comment_text;
+	private int comment_num;
+	private String comment_content;
 	private String comment_reg_date;
-
-	public int getComment_num() {
-		return comment_num;
-	}
-
-	public void setComment_num(int comment_num) {
-		this.comment_num = comment_num;
-	}
+	private int comment_parent;
+	private int comment_depth;
+	private int comment_order;
 
 	public int getBoard_num() {
 		return board_num;
@@ -31,12 +26,20 @@ public class CommentDTO {
 		this.member_id = member_id;
 	}
 
-	public String getComment_text() {
-		return comment_text;
+	public int getComment_num() {
+		return comment_num;
 	}
 
-	public void setComment_text(String comment_text) {
-		this.comment_text = comment_text;
+	public void setComment_num(int comment_num) {
+		this.comment_num = comment_num;
+	}
+
+	public String getComment_content() {
+		return comment_content;
+	}
+
+	public void setComment_content(String comment_content) {
+		this.comment_content = comment_content;
 	}
 
 	public String getComment_reg_date() {
@@ -45,6 +48,30 @@ public class CommentDTO {
 
 	public void setComment_reg_date(String comment_reg_date) {
 		this.comment_reg_date = comment_reg_date;
+	}
+
+	public int getComment_parent() {
+		return comment_parent;
+	}
+
+	public void setComment_parent(int comment_parent) {
+		this.comment_parent = comment_parent;
+	}
+
+	public int getComment_depth() {
+		return comment_depth;
+	}
+
+	public void setComment_depth(int comment_depth) {
+		this.comment_depth = comment_depth;
+	}
+
+	public int getComment_order() {
+		return comment_order;
+	}
+
+	public void setComment_order(int comment_order) {
+		this.comment_order = comment_order;
 	}
 
 }
