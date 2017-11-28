@@ -10,7 +10,6 @@
 <body>
 	<script type="text/javascript">
 		function booking() {
-			alert("예약하기")
 		}
 
 		function addCart() {
