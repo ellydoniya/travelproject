@@ -20,15 +20,15 @@
 	<div align="center">
 		<form name="f" method="post">
 			<table border="1" width="80%" height="80%">
+				<tr>
+					<td rowspan="6">사진</td>
+					<td colspan="2">이름</td>
+				</tr>
+				<tr>
+					<td colspan="2">설며ㅑ</td>
+				</tr>
 				<c:choose>
-					<c:when test="${prod_num!=0 }">
-						<tr>
-							<td rowspan="6">사진</td>
-							<td colspan="2">이름</td>
-						</tr>
-						<tr>
-							<td colspan="2">설며ㅑ</td>
-						</tr>
+					<c:when test="${prod_num!=0}">
 						<tr>
 							<td>지역</td>
 							<td>전화번호</td>
@@ -51,7 +51,7 @@
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td>prod_num 값 아님</td>
+							<td>여기는 패키지 상품일 때</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
