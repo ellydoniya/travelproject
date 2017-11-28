@@ -18,7 +18,7 @@
 	</script>
 	<div align="center">
 		<form name="f" method="post">
-			<table border="1">
+			<table border="1" width="80%" height="80%">
 				<tr>
 					<td rowspan="6">사진</td>
 					<td colspan="2">이름</td>
@@ -42,7 +42,7 @@
 						onclick="booking()"><input type="button" value="장바구니"
 						onclick="addCart()"></td>
 				</tr>
-				<tr>
+				<tr height="80%">
 					<td colspan="3">소개</td>
 				</tr>
 			</table>
