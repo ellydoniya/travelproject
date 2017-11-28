@@ -45,9 +45,6 @@
 								onclick="booking()"><input type="button" value="장바구니"
 								onclick="addCart()"></td>
 						</tr>
-						<tr height="80%">
-							<td colspan="3">소개</td>
-						</tr>
 					</c:when>
 					<c:otherwise>
 						<tr>
@@ -55,6 +52,9 @@
 						</tr>
 					</c:otherwise>
 				</c:choose>
+				<tr height="80%">
+					<td colspan="3">소개</td>
+				</tr>
 			</table>
 		</form>
 	</div>
