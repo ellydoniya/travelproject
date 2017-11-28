@@ -9,14 +9,15 @@
 <script type="text/javascript">
 	function direction() {
 		if (f.book_insurance_tou.value == 1) {
-			alert("동의")
+			f.action = "booking_insurance_join"
+			document.f.submit()
 		} else if (f.book_insurance_tou.value == 0) {
 			alert("비동의")
 		}
 	}
 </script>
 <body>
-	<form name="f">
+	<form name="f" method="get">
 		<div align="center">
 			<table>
 				<tr>

@@ -25,7 +25,7 @@ public class BookingController {
 
 	@RequestMapping(value = "booking_index", method = RequestMethod.GET)
 	public ModelAndView indexBooking(HttpServletRequest arg0) throws Exception {
-		
+
 		int prod_num = 0, pack_num = 0;
 
 		try {
@@ -45,9 +45,14 @@ public class BookingController {
 
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "booking_insurance_tou", method = RequestMethod.POST)
 	public String insuranceBooking(HttpServletRequest arg0) {
 		return "main/booking/insurance_tou";
+	}
+
+	@RequestMapping(value = "booking_insurance_join", method = RequestMethod.GET)
+	public String joinInsurance(HttpServletRequest arg0) {
+		return "main/booking/insurance_join";
 	}
 }
