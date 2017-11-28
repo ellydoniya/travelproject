@@ -8,7 +8,8 @@ public class TravelMemberDTO {
 	private String member_nickname;
 	private String member_org_img;
 	private String member_str_img;
-	private String member_email;
+	private String member_email1;
+	private String member_email2;
 	private String member_hp1;
 	private String member_hp2;
 	private String member_hp3;
@@ -73,12 +74,20 @@ public class TravelMemberDTO {
 		this.member_str_img = member_str_img;
 	}
 
-	public String getMember_email() {
-		return member_email;
+	public String getMember_email1() {
+		return member_email1;
 	}
 
-	public void setMember_email(String member_email) {
-		this.member_email = member_email;
+	public void setMember_email1(String member_email1) {
+		this.member_email1 = member_email1;
+	}
+
+	public String getMember_email2() {
+		return member_email2;
+	}
+
+	public void setMember_email2(String member_email2) {
+		this.member_email2 = member_email2;
 	}
 
 	public String getMember_hp1() {
