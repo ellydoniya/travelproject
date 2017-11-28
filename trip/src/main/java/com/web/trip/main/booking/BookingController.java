@@ -46,8 +46,8 @@ public class BookingController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "booking_insurance", method = RequestMethod.POST)
+	@RequestMapping(value = "booking_insurance_tou", method = RequestMethod.POST)
 	public String insuranceBooking(HttpServletRequest arg0) {
-		return "main/booking/insurance";
+		return "main/booking/insurance_tou";
 	}
 }

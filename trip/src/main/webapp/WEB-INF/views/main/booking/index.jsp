@@ -10,7 +10,7 @@
 <body>
 	<script type="text/javascript">
 		function booking() {
-			f.action = "booking_insurance"
+			f.action = "booking_insurance_tou"
 			document.f.submit()
 		}
 

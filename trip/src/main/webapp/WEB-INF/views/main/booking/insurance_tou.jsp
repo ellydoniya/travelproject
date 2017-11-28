@@ -8,9 +8,9 @@
 </head>
 <script type="text/javascript">
 	function direction() {
-		if (f.book_insurance.value == 1) {
+		if (f.book_insurance_tou.value == 1) {
 			alert("동의")
-		} else if (f.book_insurance.value == 0) {
+		} else if (f.book_insurance_tou.value == 0) {
 			alert("비동의")
 		}
 	}
@@ -23,9 +23,9 @@
 					<td colspan="2">약관</td>
 				</tr>
 				<tr>
-					<td><input type="radio" name="book_insurance" value="1"
+					<td><input type="radio" name="book_insurance_tou" value="1"
 						checked="checked">동의</td>
-					<td><input type="radio" name="book_insurance" value="0">비동의</td>
+					<td><input type="radio" name="book_insurance_tou" value="0">비동의</td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="button" value="계속"
