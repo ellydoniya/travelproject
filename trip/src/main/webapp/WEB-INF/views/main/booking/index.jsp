@@ -10,7 +10,6 @@
 <body>
 	<script type="text/javascript">
 		function booking() {
-			alert("예약")
 			f.action = "booking_insurance"
 			document.f.submit()
 		}
