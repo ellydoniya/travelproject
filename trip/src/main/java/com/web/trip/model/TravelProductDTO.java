@@ -9,6 +9,7 @@ public class TravelProductDTO {
 	private int prod_price;
 	private String book_date;
 	private int prod_img;
+	private String prod_cate;
 	private String prod_address1;
 	private String prod_address2;
 	private String prod_content;
@@ -76,6 +77,14 @@ public class TravelProductDTO {
 
 	public void setProd_img(int prod_img) {
 		this.prod_img = prod_img;
+	}
+
+	public String getProd_cate() {
+		return prod_cate;
+	}
+
+	public void setProd_cate(String prod_cate) {
+		this.prod_cate = prod_cate;
 	}
 
 	public String getProd_address1() {

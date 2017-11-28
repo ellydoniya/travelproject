@@ -2,6 +2,7 @@ package com.web.trip.model;
 
 public class ShopProductDTO {
 	private int shop_prod_num;
+	private String shop_prod_cate;
 	private String shop_prod_name;
 	private int shop_prod_img;
 	private int shop_prod_price;
@@ -15,6 +16,14 @@ public class ShopProductDTO {
 
 	public void setShop_prod_num(int shop_prod_num) {
 		this.shop_prod_num = shop_prod_num;
+	}
+
+	public String getShop_prod_cate() {
+		return shop_prod_cate;
+	}
+
+	public void setShop_prod_cate(String shop_prod_cate) {
+		this.shop_prod_cate = shop_prod_cate;
 	}
 
 	public String getShop_prod_name() {
