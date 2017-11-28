@@ -42,6 +42,9 @@
 						onclick="booking()"><input type="button" value="장바구니"
 						onclick="addCart()"></td>
 				</tr>
+				<tr>
+					<td colspan="3">소개</td>
+				</tr>
 			</table>
 		</form>
 	</div>
