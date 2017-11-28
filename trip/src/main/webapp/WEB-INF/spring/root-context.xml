@@ -20,7 +20,7 @@
 	<bean id="sqlSessionFactory"
 				class="org.mybatis.spring.SqlSessionFactoryBean">
 			<property name="dataSource" ref="dataSource"/>
-			<property name="typeAliasesPackage" value="com.web.trip.model.model"/>
+			<property name="typeAliasesPackage" value="com.web.trip.model"/>
 			<property name="mapperLocations" value="classpath:com/web/trip/model/*.xml"/>
 	</bean>
 	
