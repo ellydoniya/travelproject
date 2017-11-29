@@ -6,8 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.web.trip.model.ShopCategoryDTO;
-import com.web.trip.model.ShopProductDTO;
 import com.web.trip.model.TravelBookingDTO;
 import com.web.trip.model.TravelCategory;
 import com.web.trip.model.TravelMemberDTO;
@@ -98,43 +96,43 @@ public class AdminMapper {
 	public int deletePackage(int pack_num) {
 		return sqlSession.delete("deletePackage",pack_num);
 	}
-	//쇼핑몰 카테고리 등록
-	public int insertShopCategory(ShopCategoryDTO dto) {
-		return sqlSession.insert("insertShopCategory",dto);
-	}
-	//쇼핑몰 카테고리 목록
-	public List<ShopCategoryDTO> listShopCategory(){
-		return sqlSession.selectList("listShopCategory");
-	}
-	public int deleteShopCategory(int shop_cate_num) {
-		return sqlSession.delete("deleteShopCategory",shop_cate_num);
-	}
-	//getCategory
-	public ShopCategoryDTO getShopCategory(int shop_cate_num) {
-		return sqlSession.selectOne("getShopCategory",shop_cate_num);
-	}
-	//쇼핑몰 카테고리 수정
-	public int editShopCategory(ShopCategoryDTO dto) {
-		return sqlSession.update("editShopCategory",dto);
-	}
-	//쇼핑몰 상품 목록
-	public List<ShopProductDTO> listShopProduct(){
-		return sqlSession.selectList("listShopProduct");
-	}
-	//쇼핑몰 상품 등록
-	public int insertShopProd(ShopProductDTO dto) {
-		return sqlSession.insert("insertShopProduct", dto);
-	}
-	//쇼핑몰 상품 삭제
-	public int deleteShopProd(int shop_prod_num) {
-		return sqlSession.delete("deleteShopProduct", shop_prod_num);
-	}
-	//get shopProduct
-	public ShopProductDTO getProduct(int shop_prod_num){
-		return sqlSession.selectOne("getProduct", shop_prod_num);
-	}
-	//쇼핑몰 상품 수정
-	public int editShopProduct(ShopProductDTO dto) {
-		return sqlSession.update("editShopProduct", dto);
-	}
+	// //쇼핑몰 카테고리 등록
+	// public int insertShopCategory(ShopCategoryDTO dto) {
+	// return sqlSession.insert("insertShopCategory",dto);
+	// }
+	// //쇼핑몰 카테고리 목록
+	// public List<ShopCategoryDTO> listShopCategory(){
+	// return sqlSession.selectList("listShopCategory");
+	// }
+	// public int deleteShopCategory(int shop_cate_num) {
+	// return sqlSession.delete("deleteShopCategory",shop_cate_num);
+	// }
+	// //getCategory
+	// public ShopCategoryDTO getShopCategory(int shop_cate_num) {
+	// return sqlSession.selectOne("getShopCategory",shop_cate_num);
+	// }
+	// //쇼핑몰 카테고리 수정
+	// public int editShopCategory(ShopCategoryDTO dto) {
+	// return sqlSession.update("editShopCategory",dto);
+	// }
+	// //쇼핑몰 상품 목록
+	// public List<ShopProductDTO> listShopProduct(){
+	// return sqlSession.selectList("listShopProduct");
+	// }
+	// //쇼핑몰 상품 등록
+	// public int insertShopProd(ShopProductDTO dto) {
+	// return sqlSession.insert("insertShopProduct", dto);
+	// }
+	// //쇼핑몰 상품 삭제
+	// public int deleteShopProd(int shop_prod_num) {
+	// return sqlSession.delete("deleteShopProduct", shop_prod_num);
+	// }
+	// //get shopProduct
+	// public ShopProductDTO getProduct(int shop_prod_num){
+	// return sqlSession.selectOne("getProduct", shop_prod_num);
+	// }
+	// //쇼핑몰 상품 수정
+	// public int editShopProduct(ShopProductDTO dto) {
+	// return sqlSession.update("editShopProduct", dto);
+	// }
 }

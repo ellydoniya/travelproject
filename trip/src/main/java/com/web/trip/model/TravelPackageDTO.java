@@ -7,7 +7,6 @@ public class TravelPackageDTO {
 	private String pack_email;
 	private int pack_price;
 	private String pack_period;
-	private String book_date;
 	private String pack_content;
 	private String pack_place;
 	private String pack_config;
@@ -50,14 +49,6 @@ public class TravelPackageDTO {
 
 	public void setPack_period(String pack_period) {
 		this.pack_period = pack_period;
-	}
-
-	public String getBook_date() {
-		return book_date;
-	}
-
-	public void setBook_date(String book_date) {
-		this.book_date = book_date;
 	}
 
 	public String getPack_content() {
